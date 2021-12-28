@@ -5,5 +5,5 @@ export default {
     input: "src/index.ts",
     output: { file: "dist/index.js", format: "esm" },
     plugins: [typescript({ tsconfig: "./tsconfig.json" }), nodeResolve()],
-    external: [], //排除不需要打包的package
+    external: ["leaflet"], //排除不需要打包的package
 };

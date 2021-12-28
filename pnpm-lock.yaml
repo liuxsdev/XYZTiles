@@ -3,13 +3,19 @@ lockfileVersion: 5.3
 specifiers:
   '@rollup/plugin-node-resolve': ^13.1.1
   '@rollup/plugin-typescript': ^8.3.0
+  '@types/leaflet': ^1.7.7
+  leaflet: ^1.7.1
   rollup: ^2.62.0
   tslib: ^2.3.1
   typescript: ^4.5.4
 
+dependencies:
+  leaflet: 1.7.1
+
 devDependencies:
   '@rollup/plugin-node-resolve': 13.1.1_rollup@2.62.0
   '@rollup/plugin-typescript': 8.3.0_7c5ff569c0887b4f0035eb7cb6988163
+  '@types/leaflet': 1.7.7
   rollup: 2.62.0
   tslib: 2.3.1
   typescript: 4.5.4
@@ -60,6 +66,16 @@ packages:
 
   /@types/estree/0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
+    dev: true
+
+  /@types/geojson/7946.0.8:
+    resolution: {integrity: sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==}
+    dev: true
+
+  /@types/leaflet/1.7.7:
+    resolution: {integrity: sha512-5/nNqTviSqUwPxbS3PlHl8ODjfnlpOXSFtUAi7dexnisO8E3pfyotChRY/hlIYGvbBiBcKNd6V18xA8O4OpHiQ==}
+    dependencies:
+      '@types/geojson': 7946.0.8
     dev: true
 
   /@types/node/17.0.5:
@@ -114,6 +130,10 @@ packages:
   /is-module/1.0.0:
     resolution: {integrity: sha1-Mlj7afeMFNW4FdZkM2tM/7ZEFZE=}
     dev: true
+
+  /leaflet/1.7.1:
+    resolution: {integrity: sha512-/xwPEBidtg69Q3HlqPdU3DnrXQOvQU/CCHA1tcDQVzOwm91YMYaILjNp7L4Eaw5Z4sOYdbBz6koWyibppd8Zqw==}
+    dev: false
 
   /path-parse/1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
