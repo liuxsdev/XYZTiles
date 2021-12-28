@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "lib": ["ESNext"],
+        "declaration": true,
+        "declarationDir": ".",
+        "outDir": "dist",
+        "strict": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "removeComments": true //删除注释
+    },
+    "files": ["src/index.ts"],
+    "exclude": ["node_modules", "dist", "build"]
+}
