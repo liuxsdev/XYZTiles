@@ -1,5 +1,5 @@
 {
-  "name": "jslib-starter",
+  "name": "@liuxsdev/xyztiles",
   "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",
@@ -14,7 +14,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/liuxsdev/jslib-starter/issues"
   },
