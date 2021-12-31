@@ -33,8 +33,8 @@ class Tianditu {
     }
 }
 
-const XYZTIles = {
+const XYZTiles = {
     tianditu: Tianditu,
 };
 
-export { XYZTIles };
+export { XYZTiles };
