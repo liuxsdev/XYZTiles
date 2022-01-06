@@ -8,8 +8,16 @@ class Tianditu {
      * subdomains: "01234567",
      * url:https://t{s}.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TileMatrix={z}&TileRow={y}&TileCol={x}&tk={accessToken}
      * 图层说明:
-     * vec_w 矢量底图 Vector 球面墨卡托投影(WGS84)
-     * cva_w 矢量注记 Chinese Vector Annotation 球面墨卡托投影(WGS84)
+     * 图层投影均为球面墨卡托投影(WGS84) EPSG3857 也就是vec_w中"w",vec_c中"c"为经纬度投影(CGCS2000?)
+     * vec 矢量底图 Vector
+     * cva 矢量注记 Chinese Vector Annotation
+     * img 影像底图 Image
+     * cia 影像注记 Chinese Imagery Annotation
+     * ter 地形晕渲 Terrain
+     * cta 地形注记 Chinese Terrain Annotation
+     * eva 英文矢量注记 English Imagery Annotation
+     * eia 英文影像注记 English Imagery Annotation
+     * ibo 全球境界 International Borders
      */
     accessToken: string;
     private options: TileLayerOptions = {
@@ -18,37 +26,69 @@ class Tianditu {
         attribution: 'Map Data &copy; <a href="https://www.tianditu.gov.cn">天地图</a>',
         accessToken: "",
     };
+    private setAttribution(attr: string): TileLayerOptions {
+        return {
+            subdomains: "01234567",
+            maxZoom: 20,
+            attribution: `${attr}`,
+            accessToken: `${this.accessToken}`,
+        };
+    }
     private urls = {
         host: "https://t{s}.tianditu.gov.cn",
         service: "wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0",
         tile: "&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TileMatrix={z}&TileRow={y}&TileCol={x}&tk={accessToken}",
     };
     private tileUrls = {
-        vec_w: `${this.urls.host}/vec_w/${this.urls.service}&LAYER=vec${this.urls.tile}`,
-        cva_w: `${this.urls.host}/cva_w/${this.urls.service}&LAYER=cva${this.urls.tile}`,
-        img_w: `${this.urls.host}/img_w/${this.urls.service}&LAYER=img${this.urls.tile}`,
+        vec: `${this.urls.host}/vec_w/${this.urls.service}&LAYER=vec${this.urls.tile}`,
+        cva: `${this.urls.host}/cva_w/${this.urls.service}&LAYER=cva${this.urls.tile}`,
+        img: `${this.urls.host}/img_w/${this.urls.service}&LAYER=img${this.urls.tile}`,
+        cia: `${this.urls.host}/cia_w/${this.urls.service}&LAYER=cia${this.urls.tile}`,
+        ter: `${this.urls.host}/ter_w/${this.urls.service}&LAYER=ter${this.urls.tile}`,
+        cta: `${this.urls.host}/cta_w/${this.urls.service}&LAYER=cta${this.urls.tile}`,
+        eva: `${this.urls.host}/eva_w/${this.urls.service}&LAYER=eva${this.urls.tile}`,
+        eia: `${this.urls.host}/eia_w/${this.urls.service}&LAYER=eia${this.urls.tile}`,
+        ibo: `${this.urls.host}/ibo_w/${this.urls.service}&LAYER=ibo${this.urls.tile}`,
     };
     constructor(accessToken: string) {
         this.accessToken = accessToken;
-        if (this.accessToken == "") {
-            console.log("天地图token未设置");
-        }
+        this.options.accessToken = accessToken;
     }
     //矢量底图
-    vec_w() {
-        this.options.accessToken = this.accessToken;
-        return new TileLayer(this.tileUrls.vec_w, this.options);
+    vec() {
+        return new TileLayer(this.tileUrls.vec, this.options);
     }
     //矢量注记
-    cva_w() {
-        this.options.accessToken = this.accessToken;
-        this.options.attribution = ""; //不会单独想要注记层吧?
-        return new TileLayer(this.tileUrls.cva_w, this.options);
+    cva() {
+        return new TileLayer(this.tileUrls.cva, this.setAttribution(""));
     }
     //影像底图
-    img_w() {
-        this.options.accessToken = this.accessToken;
-        return new TileLayer(this.tileUrls.img_w, this.options);
+    img() {
+        return new TileLayer(this.tileUrls.img, this.options);
+    }
+    //影像注记
+    cia() {
+        return new TileLayer(this.tileUrls.cia, this.options);
+    }
+    //地形晕渲
+    ter() {
+        return new TileLayer(this.tileUrls.ter, this.options);
+    }
+    //地形注记
+    cta() {
+        return new TileLayer(this.tileUrls.cta, this.options);
+    }
+    //英文矢量注记
+    eva() {
+        return new TileLayer(this.tileUrls.eva, this.options);
+    }
+    //英文影像注记
+    eia() {
+        return new TileLayer(this.tileUrls.eia, this.options);
+    }
+    //全球境界
+    ibo() {
+        return new TileLayer(this.tileUrls.ibo, this.options);
     }
 }
 
